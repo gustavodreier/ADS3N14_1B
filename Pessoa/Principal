@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+
+public class Principal {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Pessoa p = new Pessoa();
+		
+		System.out.println("Digite seu nome: ");
+		
+		Scanner sc = new Scanner(System.in);
+		
+		p.setNome(sc.next());
+		
+		System.out.println("Nome: "+p.getNome());
+		
+		sc.close();
+		
+		System.exit(0);
+		
+
+	}
+
+}
