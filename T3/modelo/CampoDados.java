@@ -45,6 +45,10 @@ public class CampoDados {
 		for (int i = coluna; i < coluna+navio.getTamanho(); i++) {
 			campo[linha][i] = navio;
 		}
+		//atualiza as referencias da linha e coluna da criação
+		//estas são usadas para testar se o navio foi destruido
+		navio.setRefLinha(linha);
+		navio.setRefColuna(coluna);
 		
 		return true;
 	}//fim insereNavio
