@@ -126,34 +126,55 @@ public class Jogo {
 					
 				break;
 			case 2:
-				mensagem.acertou("TORPEDEIRO");
 				visao.alteraCampo('O', linha, coluna);
 				pontos.disparo();
 				campo.insereAlvejado(linha, coluna);
-				
-				pontos.acerto();
+				if (obj.estaDestruido(campo)) {
+					mensagem.destruiu("TORPEDEIRO");
+					pontos.destroi();
+				} else {
+					mensagem.acertou("TORPEDEIRO");
+					pontos.acerto();
+				}
 				break;
 			case 3:
 				visao.alteraCampo('O', linha, coluna);
 				pontos.disparo();
 				campo.insereAlvejado(linha, coluna);
-				mensagem.acertou("FRAGATA");
-				pontos.acerto();
+				if (obj.estaDestruido(campo)) {
+					mensagem.destruiu("FRAGATA");
+					pontos.destroi();
+				} else {
+					mensagem.acertou("FRAGATA");
+					pontos.acerto();
+				}
+				
 				break;
 			case 4:
 				visao.alteraCampo('O', linha, coluna);
 				pontos.disparo();
 				campo.insereAlvejado(linha, coluna);
-				mensagem.acertou("DESTROYER");
-				pontos.acerto();
+				if (obj.estaDestruido(campo)) {
+					mensagem.destruiu("DESTROYER");
+					pontos.destroi();
+				} else {
+					mensagem.acertou("DESTROYER");
+					pontos.acerto();
+				}
+				
 				break;
 			case 5:
 				
 				visao.alteraCampo('O', linha, coluna);
 				pontos.disparo();
 				campo.insereAlvejado(linha, coluna);
-				mensagem.acertou("PORTA-AVIÕES");
-				pontos.acerto();
+				if (obj.estaDestruido(campo)) {
+					mensagem.destruiu("PORTA-AVÕES");
+					pontos.destroi();
+				} else {
+					mensagem.acertou("PORTA-AVÕES");
+					pontos.acerto();
+				}
 				break;
 			default:
 				mensagem.erro1();
@@ -168,7 +189,8 @@ public class Jogo {
 			
 		}//fim while
 		
-		System.out.println("Jogo encerrado!");
+		//System.out.println("Jogo encerrado!");
+		mensagem.erro1();
 		
 		sc.close();
 		System.exit(0);
