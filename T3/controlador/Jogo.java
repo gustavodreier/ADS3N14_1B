@@ -21,28 +21,54 @@ public class Jogo {
 		
 		PortaAvioes porta = new PortaAvioes();
 		Destroyer destroyer = new Destroyer();
+		Destroyer destroyer1 = new Destroyer();
 		Fragata fragata = new Fragata();
+		Fragata fragata1 = new Fragata();
 		Torpedeiro torpedeiro = new Torpedeiro();
+		Torpedeiro torpedeiro1 = new Torpedeiro();
+		Torpedeiro torpedeiro2 = new Torpedeiro();
 		Submarino submarino = new Submarino();
+		Submarino submarino1 = new Submarino();
+		Submarino submarino2 = new Submarino();
+		Submarino submarino3 = new Submarino();
+		Submarino submarino4 = new Submarino();
 		
 		//insere navios no campo
 		//altera o valor objetos
 		while(campo.insereNavio(porta) == false);
 		campo.addObjetosCampo(porta.getTamanho());
-		for (int i = 0; i < 2; i++) {
-			while(campo.insereNavio(destroyer) == false);
-			campo.addObjetosCampo(destroyer.getTamanho());
-			while(campo.insereNavio(fragata) == false);
-			campo.addObjetosCampo(fragata.getTamanho());
-		}
-		for (int i = 0; i < 3; i++) {
-			while(campo.insereNavio(torpedeiro) == false);
-			campo.addObjetosCampo(torpedeiro.getTamanho());
-		}
-		for (int i = 0; i < 5; i++) {
-			while(campo.insereNavio(submarino) == false);
-			campo.addObjetosCampo(submarino.getTamanho());
-		}
+		
+		while(campo.insereNavio(destroyer) == false);
+		campo.addObjetosCampo(destroyer.getTamanho());
+		while(campo.insereNavio(destroyer1) == false);
+		campo.addObjetosCampo(destroyer1.getTamanho());
+		
+		while(campo.insereNavio(fragata) == false);
+		campo.addObjetosCampo(fragata.getTamanho());
+		while(campo.insereNavio(fragata1) == false);
+		campo.addObjetosCampo(fragata1.getTamanho());
+		
+		
+		
+		while(campo.insereNavio(torpedeiro) == false);
+		campo.addObjetosCampo(torpedeiro.getTamanho());
+		while(campo.insereNavio(torpedeiro1) == false);
+		campo.addObjetosCampo(torpedeiro1.getTamanho());
+		while(campo.insereNavio(torpedeiro2) == false);
+		campo.addObjetosCampo(torpedeiro2.getTamanho());
+		
+		
+		while(campo.insereNavio(submarino) == false);
+		campo.addObjetosCampo(submarino.getTamanho());
+		while(campo.insereNavio(submarino1) == false);
+		campo.addObjetosCampo(submarino1.getTamanho());
+		while(campo.insereNavio(submarino2) == false);
+		campo.addObjetosCampo(submarino2.getTamanho());
+		while(campo.insereNavio(submarino3) == false);
+		campo.addObjetosCampo(submarino3.getTamanho());
+		while(campo.insereNavio(submarino4) == false);
+		campo.addObjetosCampo(submarino4.getTamanho());
+		
 		
 		//apos as posicoes serem criadas o jogo pode ser iniciado
 		Jogada jogada = new Jogada();
@@ -86,11 +112,18 @@ public class Jogo {
 				campo.insereAlvejado(linha, coluna);
 				break;
 			case 1:
-				mensagem.acertou("SUBMARINO");
+				
 				visao.alteraCampo('O', linha, coluna);
 				pontos.disparo();
 				campo.insereAlvejado(linha, coluna);
-				pontos.acerto();
+				if (obj.estaDestruido(campo)) {
+					mensagem.destruiu("SUBMARINO");
+					pontos.destroi();
+				} else {
+					mensagem.acertou("SUBMARINO");
+					pontos.acerto();
+				}
+					
 				break;
 			case 2:
 				mensagem.acertou("TORPEDEIRO");
