@@ -41,12 +41,12 @@ public class CampoDados {
 				return false;
 			}	
 		}
-		//se não havia navios entao insere o navio nas posições
+		//se nÃ£o havia navios entao insere o navio nas posiÃ§Ãµes
 		for (int i = coluna; i < coluna+navio.getTamanho(); i++) {
 			campo[linha][i] = navio;
 		}
-		//atualiza as referencias da linha e coluna da criação
-		//estas são usadas para testar se o navio foi destruido
+		//atualiza as referencias da linha e coluna da criaÃ§Ã£o
+		//estas sÃ£o usadas para testar se o navio foi destruido
 		navio.setRefLinha(linha);
 		navio.setRefColuna(coluna);
 		
@@ -59,6 +59,10 @@ public class CampoDados {
 	
 	public int getObjetosCampo() {
 		return objetosCampo;
+	}
+	
+	public void reduzObjetosCampo() {
+		objetosCampo--;
 	}
 	
 	public void addObjetosCampo(int valor) {
