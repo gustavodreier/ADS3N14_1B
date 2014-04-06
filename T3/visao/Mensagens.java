@@ -4,7 +4,7 @@ public class Mensagens {
 	
 	public void alvejado() {
 		
-		System.out.println("Esta posição já foi alvejada. Favor escolha uma posição marcada com \".\"");
+		System.out.println("Esta posiçãoo já foi alvejada. Favor escolha uma posiçãoo marcada com \".\"");
 		
 	}
 	
@@ -33,6 +33,14 @@ public class Mensagens {
 	}
 	public void totalPontos(int pontos) {
 		System.out.println("Total de pontos = " + pontos);
+	}
+	public void venceu(int pontos) {
+		System.out.println("Parabéns você venceu!");
+		System.out.println("Pontuação final = "+pontos);
+	}
+	public void perdeu(int pontos) {
+		System.out.println("Você perdeu!");
+		System.out.println("Pontuação final = "+pontos);
 	}
 	
 }
