@@ -116,7 +116,7 @@ public class Jogo {
 				visao.alteraCampo('O', linha, coluna);
 				pontos.disparo();
 				campo.insereAlvejado(linha, coluna);
-				if (obj.estaDestruido(campo)) {
+				if (((Navio) obj).estaDestruido(campo)) {
 					mensagem.destruiu("SUBMARINO");
 					pontos.destroi();
 				} else {
@@ -129,7 +129,7 @@ public class Jogo {
 				visao.alteraCampo('O', linha, coluna);
 				pontos.disparo();
 				campo.insereAlvejado(linha, coluna);
-				if (obj.estaDestruido(campo)) {
+				if (((Navio) obj).estaDestruido(campo)) {
 					mensagem.destruiu("TORPEDEIRO");
 					pontos.destroi();
 				} else {
@@ -141,7 +141,7 @@ public class Jogo {
 				visao.alteraCampo('O', linha, coluna);
 				pontos.disparo();
 				campo.insereAlvejado(linha, coluna);
-				if (obj.estaDestruido(campo)) {
+				if (((Navio) obj).estaDestruido(campo)) {
 					mensagem.destruiu("FRAGATA");
 					pontos.destroi();
 				} else {
@@ -154,7 +154,7 @@ public class Jogo {
 				visao.alteraCampo('O', linha, coluna);
 				pontos.disparo();
 				campo.insereAlvejado(linha, coluna);
-				if (obj.estaDestruido(campo)) {
+				if (((Navio) obj).estaDestruido(campo)) {
 					mensagem.destruiu("DESTROYER");
 					pontos.destroi();
 				} else {
@@ -168,7 +168,7 @@ public class Jogo {
 				visao.alteraCampo('O', linha, coluna);
 				pontos.disparo();
 				campo.insereAlvejado(linha, coluna);
-				if (obj.estaDestruido(campo)) {
+				if (((Navio) obj).estaDestruido(campo)) {
 					mensagem.destruiu("PORTA-AVÕES");
 					pontos.destroi();
 				} else {

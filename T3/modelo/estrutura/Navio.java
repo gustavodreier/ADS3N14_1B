@@ -29,7 +29,7 @@ abstract public class Navio extends Objeto{
 		for (int i = refColuna; i < (refColuna + tamanho); i++) {
 			//se existe pelo menos uma posição que não foi alvejada
 			//o navio não foi destruido
-			if(campo.getCampo(refLinha, i).getValor != -1)
+			if(campo.getCampo(refLinha, i).getValor() != -1)
 				return false;
 		}
 		
