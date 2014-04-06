@@ -7,18 +7,18 @@ public class TestaOrdenacao {
 		// TODO Auto-generated method stub
 		
 		int[] array = new int[1000];
-		//int[] array2 = new int[array.length];
-		//int[] array = {
 		
-		Random r = new Random();
+		Random r = new Random(1);
 		for (int i = 0; i < array.length; i++) {
-			array[i] = r.nextInt(2000);
+			array[i] = r.nextInt(1000);
+			//System.out.println("Posicao "+i+" = "+array[i]);
 		}
 		
+		//SelectionSort sel = new SelectionSort();
+		BubbleSort bub = new BubbleSort();
 		
-		SelectionSort sel = new SelectionSort();
-		
-		array = sel.ordena(array);
+		//array = sel.ordena(array);
+		array = bub.ordena(array);
 		
 		for (int i = 0; i < array.length; i++) {
 			System.out.println("Posicao " + i  + " = " + array[i]);
