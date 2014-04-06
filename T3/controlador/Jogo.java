@@ -99,11 +99,11 @@ public class Jogo {
 			//verifica o que tem na posicao jogada
 			obj = campo.getCampo(jogada.getLinha(), jogada.getColuna());
 			
-			//realiza as checagens e ações apartir da posição passada.
+			//realiza as checagens e aÃ§Ãµes apartir da posiÃ§Ã£o passada.
 			switch (obj.getValor()) {
 			case -1:
 				mensagem.alvejado();
-				//não deve ser descontado pontos
+				//nÃ£o deve ser descontado pontos
 				break;
 			case 0:
 				mensagem.erro();
@@ -123,7 +123,7 @@ public class Jogo {
 					mensagem.acertou("SUBMARINO");
 					pontos.acerto();
 				}
-					
+				campo.reduzObjetosCampo();	
 				break;
 			case 2:
 				visao.alteraCampo('O', linha, coluna);
@@ -136,6 +136,7 @@ public class Jogo {
 					mensagem.acertou("TORPEDEIRO");
 					pontos.acerto();
 				}
+				campo.reduzObjetosCampo();
 				break;
 			case 3:
 				visao.alteraCampo('O', linha, coluna);
@@ -148,7 +149,7 @@ public class Jogo {
 					mensagem.acertou("FRAGATA");
 					pontos.acerto();
 				}
-				
+				campo.reduzObjetosCampo();
 				break;
 			case 4:
 				visao.alteraCampo('O', linha, coluna);
@@ -161,7 +162,7 @@ public class Jogo {
 					mensagem.acertou("DESTROYER");
 					pontos.acerto();
 				}
-				
+				campo.reduzObjetosCampo();
 				break;
 			case 5:
 				
@@ -169,12 +170,13 @@ public class Jogo {
 				pontos.disparo();
 				campo.insereAlvejado(linha, coluna);
 				if (((Navio) obj).estaDestruido(campo)) {
-					mensagem.destruiu("PORTA-AVÕES");
+					mensagem.destruiu("PORTA-AVIÕES");
 					pontos.destroi();
 				} else {
-					mensagem.acertou("PORTA-AVÕES");
+					mensagem.acertou("PORTA-AVIÕES");
 					pontos.acerto();
 				}
+				campo.reduzObjetosCampo();
 				break;
 			default:
 				mensagem.erro1();
@@ -190,7 +192,7 @@ public class Jogo {
 		}//fim while
 		
 		//System.out.println("Jogo encerrado!");
-		mensagem.erro1();
+		//mensagem.erro1();
 		
 		sc.close();
 		System.exit(0);
