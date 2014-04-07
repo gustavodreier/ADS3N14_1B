@@ -1,4 +1,3 @@
-
 public class BubbleSort {
 	
 	int atual;
@@ -17,13 +16,13 @@ public class BubbleSort {
 					troca = true;
 				}
 			}
-		}
+			//se nao realizou trocas significa que ja esta ordenado
+			if (troca == false)
+				return array;
 			
+		}//fim for
 			
-		
 		return array;
-		
-	}
-	
+	}//fim class ordena
 	
 }
