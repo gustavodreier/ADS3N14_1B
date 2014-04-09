@@ -1,8 +1,10 @@
 public class BubbleSort {
 	
-	int atual;
-	int auxiliar;
-	boolean troca;
+	private int atual;
+	private int auxiliar;
+	private boolean troca;
+	private int numTroca = 0;
+	private int numComparacao = 0;
 	public int[] ordena(int[] array) {
 		
 		for (int i = (array.length - 1); i > 0; i--) {
@@ -14,7 +16,9 @@ public class BubbleSort {
 					array[j] = array[j+1];
 					array[j+1] = auxiliar;
 					troca = true;
+					numTroca++;
 				}
+			numComparacao++;	
 			}
 			//se nao realizou trocas significa que ja esta ordenado
 			if (troca == false)
@@ -24,5 +28,13 @@ public class BubbleSort {
 			
 		return array;
 	}//fim class ordena
+	
+	public void getNumComparacao() {
+		return numComparacao;
+	}
+	
+	public void getNumTroca() {
+		return numTroca;
+	}
 	
 }
