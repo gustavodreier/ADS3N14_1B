@@ -14,15 +14,22 @@ public class TestaOrdenacao {
 			//System.out.println("Posicao "+i+" = "+array[i]);
 		}
 		
-		//SelectionSort sel = new SelectionSort();
+		SelectionSort sel = new SelectionSort();
 		BubbleSort bub = new BubbleSort();
 		
-		//array = sel.ordena(array);
-		array = bub.ordena(array);
+		int[] arraySel = sel.ordena(array);
+		int[] arrayBub = bub.ordena(array);
 		
+		System.out.println("Numero de comparacoes do Selection Sort = "+sel.getNumComparacao);
+		System.out.println("Numero de trocas do Selection Sort = "+sel.getNumTroca);
+		
+		System.out.println("Numero de comparacoes do Bubble Sort = "+bub.getNumComparacao);
+		System.out.println("Numero de trocas do Bubble Sort = "+bub.getNumTroca);
+		/*
 		for (int i = 0; i < array.length; i++) {
 			System.out.println("Posicao " + i  + " = " + array[i]);
 		}
+		*/
 
 	}
 
