@@ -1,8 +1,9 @@
-
 public class SelectionSort {
 	
 	private int menor;
 	private int auxiliar;
+	private int numTroca;
+	private int numComparacao;
 	
 	public int[] ordena(int[] array ) {
 		//quando ordenar o penultimo automaticamente ja ordenará o ultimo
@@ -13,14 +14,24 @@ public class SelectionSort {
 				if (array[j] < array[menor]) {
 					menor = j;
 				}
+			numComparacao++;	
 			}//fim for j
 			//apos encontrar o menor coloca na primeira posicao nao ordenada
-			auxiliar = array[i];
-			array[i] = array[menor];
-			array[menor] = auxiliar;
+		auxiliar = array[i];
+		array[i] = array[menor];
+		array[menor] = auxiliar;
+		numTroca++;	
 		}//fim for i
 		
 		return array;
+	}
+	
+	public int getNumTroca() {
+		return numTroca;
+	}
+	
+	public int getNumComparacao() {
+		return numComparacao;
 	}
 
 }
