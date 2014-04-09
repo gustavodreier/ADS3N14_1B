@@ -11,7 +11,7 @@ public class TestaOrdenacao {
 		int[] arrayBub = new int[lenght];
 		int[] arraySel = new int[lenght];
 
-		Random r = new Random(2);
+		Random r = new Random();
 		for (int i = 0; i < arraySel.length; i++) {
 			arrayBub[i] = arraySel[i] = r.nextInt(lenght);
 		}
