@@ -3,9 +3,13 @@ package dados;
 public class Pessoa {
 	
 	private String nome;
-	private int telefone;
+	private String telefone;
 	
-	public Pessoa(String nome, int telefone) {
+	public Pessoa(String nome) {
+		this.nome = nome;
+	}
+	
+	public Pessoa(String nome, String telefone) {
 		this.nome = nome;
 		this.telefone = telefone;
 	}
@@ -14,8 +18,12 @@ public class Pessoa {
 		return nome;
 	}
 
-	public int getTelefone() {
+	public String getTelefone() {
 		return telefone;
+	}
+	
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 }
