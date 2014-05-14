@@ -130,7 +130,6 @@ public class Arvore {
 		return saida;
 	}//fim travessia infixa
 	
-	
 	public ArrayList<Nodo> travessiaInfixa() {
 		ArrayList<Nodo> lista = new ArrayList<Nodo>();
 		
@@ -204,23 +203,147 @@ public class Arvore {
 		return lista;
 	}//fim travessia Posfixa
 	
-	public Nodo buscaProfundidade(String valor) {
+	public ArrayList<Nodo> buscaProfundidade() {
 		//Depth First Search
 		ArrayList<Nodo> pilha = new ArrayList<Nodo>();
+		ArrayList<Nodo> saida = new ArrayList<Nodo>();
 		Nodo nodo;
 		pilha.add(raiz);
 		while(!pilha.isEmpty()) {
 			nodo = pilha.remove((pilha.size()-1));
-			if (nodo.getValor().equals(valor)) {
+			/*
+			if (nodo.getValor().equalsIgnoreCase(valor)) {
 				return nodo;
 			}
+			*/
+			saida.add(nodo);
 			if (nodo.getLeftNodo() != null)
 				pilha.add(nodo.getLeftNodo());
 			if (nodo.getRightNodo() != null)
 				pilha.add(nodo.getRightNodo());
 		}
 		
-		return null;
+		return saida;
+	}//fim busca profundidade
+	
+	public Nodo buscaNodo(String valor) {
+		
+		Nodo nodo = buscaNodo(valor, raiz);
+		return nodo;
+		
+	}
+	
+	private Nodo buscaNodo(String valor, Nodo nodo) {
+		//busca recursivamente até localizar o nodo ou descobrir que o nodo não existe
+		if (nodo == null) {
+			return nodo;
+		} else if (nodo.getValor().equalsIgnoreCase(valor) || nodo == null) {
+			return nodo;
+		} else if (valor.compareToIgnoreCase(nodo.getValor()) < 0) {
+			return nodo = buscaNodo(valor, nodo.getLeftNodo());
+		} else {
+			return nodo = buscaNodo(valor, nodo.getRightNodo());
+		}
+	}
+	
+	public Nodo buscaPai(String valor) {
+		if (raiz == null)
+			return null;
+		else if (raiz.getValor().equalsIgnoreCase(valor))
+			return null;
+		else
+			return buscaPai(valor, raiz);
+	}
+	
+	private Nodo buscaPai(String valor, Nodo nodo) {
+		
+		if (nodo == null)
+			return null;
+		else if (valor.compareToIgnoreCase(nodo.getValor()) < 0) {
+			if (nodo.getLeftNodo() == null)
+				return null;
+			else if (valor.equalsIgnoreCase(nodo.getLeftNodo().getValor()))
+				return nodo;
+			else
+				return buscaPai(valor, nodo.getLeftNodo());
+		} else if (valor.compareToIgnoreCase(nodo.getValor()) > 0) {
+			if (nodo.getRightNodo() == null) 
+				return null;
+			else if (valor.equalsIgnoreCase(nodo.getRightNodo().getValor()))
+				return nodo;
+			else
+				return nodo;
+		}
+		return nodo;
+	}//fim buscaPai
+	
+	public boolean removeNodo(String valor) {
+		Nodo nodo = buscaNodo(valor);
+		Nodo pai = buscaPai(valor);
+		
+		if (nodo == null)
+			return false;
+		
+		if (ehFolha(nodo)) {
+			removeFolha(pai, nodo);
+		} else if (nodo.getRightNodo() == null) {
+			removeFilhoUnicoLeft(pai, nodo);
+		} else if (nodo.getLeftNodo() == null) {
+			removeFilhoUnicoRight(pai, nodo);
+		} else {
+			//possui dois filhos
+			Nodo auxiliar = LeftDeapthSearch(nodo.getRightNodo());
+			auxiliar.setLeftNodo(nodo.getLeftNodo());
+			//se pai for nulo elemento eh raiz
+			if (pai == null)
+				raiz = auxiliar;
+			else
+				pai.setRightNodo(auxiliar);
+		}
+		return true;
+		
+	}//fim remove nodo
+	
+	private void removeFolha(Nodo pai, Nodo nodo) {
+		if (nodo == raiz) {
+			raiz = null;
+		} else if (pai.getLeftNodo() == nodo) {
+			pai.setLeftNodo(null);
+		} else if (pai.getRightNodo() == nodo) {
+			pai.setRightNodo(null);
+		} else {
+			//nao localizou o pai
+			System.out.println("Referencia ao pai não existe!");
+		}
+	}
+	
+	private void removeFilhoUnicoLeft(Nodo pai, Nodo nodo) {
+		//so possui um filho a esquerda
+		if (raiz == nodo)
+			raiz.setLeftNodo(nodo.getLeftNodo());
+		if (pai.getLeftNodo() == nodo) {
+			pai.setLeftNodo(nodo.getLeftNodo());
+		} else {
+			pai.setRightNodo(nodo.getLeftNodo());
+		}
+	}
+	
+	private void removeFilhoUnicoRight(Nodo pai, Nodo nodo) {
+		//so possui um filho a direita
+		if (raiz == nodo)
+			raiz.setRightNodo(nodo.getRightNodo());
+		if (pai.getLeftNodo() == nodo) {
+			pai.setLeftNodo(nodo.getRightNodo());
+		} else {
+			pai.setRightNodo(nodo.getRightNodo());
+		}
+	}
+	
+	private Nodo LeftDeapthSearch(Nodo nodo) {
+		while (nodo.getLeftNodo() != null) {
+			nodo = nodo.getLeftNodo();
+		}
+		return nodo;
 	}
 	
 }
