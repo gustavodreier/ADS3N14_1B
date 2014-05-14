@@ -44,4 +44,8 @@ public class Nodo{
 		return right;
 	}
 	
+	public Pessoa getDados() {
+		return dados;
+	}
+	
 }
