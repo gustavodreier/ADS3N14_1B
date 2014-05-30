@@ -1,4 +1,4 @@
-package AgendaDeContatos.dados;
+package dados;
 
 public class Pessoa {
 	
