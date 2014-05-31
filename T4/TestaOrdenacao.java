@@ -5,25 +5,29 @@ public class TestaOrdenacao {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-		int[] array = new int[1000];
-		
-		Random r = new Random(1);
-		for (int i = 0; i < array.length; i++) {
-			array[i] = r.nextInt(1000);
-			//System.out.println("Posicao "+i+" = "+array[i]);
-		}
-		
-		//SelectionSort sel = new SelectionSort();
-		BubbleSort bub = new BubbleSort();
-		
-		//array = sel.ordena(array);
-		array = bub.ordena(array);
-		
-		for (int i = 0; i < array.length; i++) {
-			System.out.println("Posicao " + i  + " = " + array[i]);
-		}
 
+		int lenght = 1000;
+		
+		int[] arrayBub = new int[lenght];
+		int[] arraySel = new int[lenght];
+
+		Random r = new Random();
+		for (int i = 0; i < arraySel.length; i++) {
+			arrayBub[i] = arraySel[i] = r.nextInt(lenght);
+		}
+		
+		SelectionSort sel = new SelectionSort();
+		arraySel = sel.ordena(arraySel);
+		
+		BubbleSort bub = new BubbleSort();
+		arrayBub = bub.ordena(arrayBub);
+
+		System.out.println("Numero de comparacoes do Selection Sort = "+sel.getNumComparacao());
+		System.out.println("Numero de trocas do Selection Sort = "+sel.getNumTroca());
+
+		System.out.println("Numero de comparacoes do Bubble Sort = "+bub.getNumComparacao());
+		System.out.println("Numero de trocas do Bubble Sort = "+bub.getNumTroca());
+		
 	}
 
 }
